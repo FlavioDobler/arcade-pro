@@ -41,13 +41,14 @@ class LoginView: UIView {
         userNameTextField.translatesAutoresizingMaskIntoConstraints = false
         userNameTextField.placeholder = "Username"
         userNameTextField.delegate = self
-        userNameTextField.layer.cornerRadius = 10
+        
         
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Password"
         passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.layer.cornerRadius = 10
+       
+        
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -55,6 +56,9 @@ class LoginView: UIView {
         
         dividerView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.backgroundColor = .secondarySystemFill
+        
+        layer.cornerRadius = 10
+        clipsToBounds = true
     }
     
     
@@ -90,11 +94,7 @@ extension LoginView : UITextFieldDelegate {
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if userNameTextField.text != ""{
-            return true
-        } else {
-            return false
-        }
+       return true 
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
