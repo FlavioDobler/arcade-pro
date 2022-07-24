@@ -9,6 +9,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    
+    let logoLabel = UILabel()
+    let subLabel = UILabel()
     let loginView = LoginView()
     let signInButton = UIButton(type: .system)
     let errorMessageLabel = UILabel()
@@ -35,6 +38,21 @@ extension LoginViewController {
     private func style(){
         loginView.translatesAutoresizingMaskIntoConstraints = false
         
+        logoLabel.translatesAutoresizingMaskIntoConstraints = false
+        logoLabel.text = "Bankey"
+        logoLabel.font = .boldSystemFont(ofSize: 28)
+        logoLabel.textColor = .systemGray
+        logoLabel.textAlignment = .center
+        logoLabel.numberOfLines = 0
+        
+        subLabel.translatesAutoresizingMaskIntoConstraints = false
+        subLabel.text = "Your premium source for all \n things banking!"
+        subLabel.numberOfLines = 0
+        subLabel.textColor = .systemGray
+        subLabel.textAlignment = .center
+        subLabel.font = .systemFont(ofSize: 24, weight: .regular)
+        
+        
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         signInButton.configuration = .filled()
         signInButton.configuration?.imagePadding = 8
@@ -50,8 +68,28 @@ extension LoginViewController {
     
     private func layout(){
         view.addSubview(loginView)
+        view.addSubview(logoLabel)
+        view.addSubview(subLabel)
         view.addSubview(signInButton)
         view.addSubview(errorMessageLabel)
+        
+        //Logo Label
+            
+        NSLayoutConstraint.activate([
+            logoLabel.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 26),
+            logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            //logoLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 20),
+            //view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 1)
+        
+        ])
+        
+        //Sub Label
+        NSLayoutConstraint.activate([
+        
+            subLabel.topAnchor.constraint(equalToSystemSpacingBelow: logoLabel.bottomAnchor, multiplier: 1),
+            subLabel.centerXAnchor.constraint(equalTo: logoLabel.centerXAnchor)
+        
+        ])
         
         //Login View
         NSLayoutConstraint.activate([
